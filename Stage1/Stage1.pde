@@ -1,5 +1,3 @@
-// Adding extra comments for a test
-
 // Katy Herrick 10/11/14
 // Task 1
 // Modified from: The Nature of Code
