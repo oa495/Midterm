@@ -22,7 +22,7 @@ Vehicle car1;
 Vehicle car2;
 
 void setup() {
-  size(640, 360);
+  size(displayWidth, displayHeight);
 
   // Each vehicle has different maxspeed and maxforce for demo purposes
   car1 = new Vehicle(new PVector(0, height/2), 2, 0.04);
@@ -44,11 +44,10 @@ void draw() {
 
   // Instructions
   fill(0);
-  text("Hit space bar to toggle debugging lines.\nClick the mouse to generate a new path.", 10, height-30);
+  // text("Hit space bar to toggle debugging lines.\nClick the mouse to generate a new path.", 10, height-30);
 }
 void mouseDragged() {
-      drawPath();
-
+  drawPath();
 }
 
 void drawPath() {
@@ -103,6 +102,7 @@ class Path {
   }
 
   PVector getEnd() {
+    println(points.get(points.size()-1));
     return points.get(points.size()-1);
   }
 
@@ -111,7 +111,8 @@ class Path {
   void display() {
     // Draw thick line for radius
     stroke(175);
-    strokeWeight(radius*2);
+    //   strokeWeight(radius*2);
+    strokeWeight(radius);
     noFill();
     beginShape();
     for (PVector v : points) {
