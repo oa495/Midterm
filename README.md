@@ -13,7 +13,7 @@ Katy Herrick (@KatyHerrick)
 ***
 
 ```
-public void *setup()* {
+public void setup() {
   size(640, 480);
   textAlign(CENTER, CENTER);
   background(0);
