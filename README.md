@@ -25,3 +25,10 @@ public void setup() {
 
 ### Educational. Also, Game.
 This is an educational adventure through the solar system. You get to visit each planet individually and learn something about it, but as with most games, getting there is more than half the fun. Good luck avoiding all of the asteroids.
+
+### Update 1
+Added the two sketch files that are the basis examples for our game.
+
+`SolarSystem.pde`
+
+`NightSky.pde`
