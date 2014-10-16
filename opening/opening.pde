@@ -1,7 +1,14 @@
 Planet[] planets = new Planet[10];
+import processing.opengl.*;
+
 int state = 0;
 PImage back;
 PFont f;
+final static int R = 1000;
+PMatrix3D cam;
+float[][] stars;
+float inc = 100;
+
 //work on using 2d image as 3d background
 //also so squares around images won't show
 
@@ -34,6 +41,19 @@ void setup() {
     }
     planets[i] = new Planet(diameter, xy, yx, zz, i, velx1, vely1, velz1);
   }
+  sphereDetail(1);
+  stars = new float[1500][3];
+  for (int i = 0; i < stars.length; i++)
+  {
+    float p = random(-PI, PI);
+    float t = asin(random(-1, 1));
+    stars[i] = new float[] {
+      R * cos(t) * cos(p), 
+      R * cos(t) * sin(p), 
+      R * sin(t)
+      };
+    }
+    cam = new PMatrix3D();
 }
 void stuff() {
   float cameraZ = ((height/2.0) / tan(PI*60.0/360.0));
@@ -48,19 +68,18 @@ void draw() {
   if (state == 0) {
     background(0);
     if (((keyPressed) && (key != 's')) || (!keyPressed)) {
-      stuff();
-    } 
+      //   stuff();
+    }
     for (int i = 0; i < planets.length; i++ ) {
       planets[i].display(i);
       planets[i].update();
     }
-    /* hint(DISABLE_DEPTH_TEST);
+    /*  hint(DISABLE_DEPTH_TEST);
      camera();
      noLights();
      image(back, 0, 0, displayWidth, displayHeight);
      hint(ENABLE_DEPTH_TEST);
-     **/
-    hint(DISABLE_DEPTH_TEST);
+     */
     camera();
     noLights();
     fill(255, 0, 0);
@@ -68,9 +87,9 @@ void draw() {
     textFont(f, 100);
     fill(255);
     text("START", 320, 100);
-    textSize(16);
+    //    textSize(16);
     fill(237, 28, 36);
-    text("Press 's' to stop zoom.", 410, 200);
+    // text("Press 's' to stop zoom.", 410, 200);
     strokeWeight(9);
     stroke(0, 0, 168);
     fill(0, 0, 168, 40);
@@ -80,16 +99,65 @@ void draw() {
       rect(470, 70, 400, 178);
       fill(237, 28, 36);
       text("START", 320, 100);
-      textSize(16);
-      text("Press 's' to stop zoom.", 410, 200);
+      //    textSize(16);
+      //     text("Press 's' to stop zoom.", 410, 200);
       if (mousePressed) {
         state = 1;
       }
     }
   } else if (state == 1) {
+    processInput();
+    PVector x = cam.mult(new PVector(1, 0, 0), new PVector(0, 0, 0));
+    PVector y = cam.mult(new PVector(0, 1, 0), new PVector(0, 0, 0));
+    PVector d = x.cross(y); 
+    d.normalize(); 
+    d.mult(R);
     background(0);
+    noStroke();
+    camera(0, 0, 0, d.x, d.y, d.z, y.x, y.y, y.z);
+    for (int i = 0; i < stars.length-1; i++)
+    {
+      pushMatrix();
+      translate(stars[i][0], stars[i][1], stars[i][2]);
+      fill(255);
+      sphere(5);
+      popMatrix();
+    }
+    pushMatrix();
+    translate(stars[1499][0], stars[1499][1], stars[1499][2]);
+    fill(255, 0, 0);
+    sphere(10);
+    popMatrix();
+
+    camera();
+    stroke(255);
+    line(width / 2 - 9, height / 2 - 0, width / 2 + 8, height / 2 + 0);
+    line(width / 2 - 0, height / 2 - 9, width / 2 + 0, height / 2 + 8);
   }
 }
+boolean[] keys = new boolean[526];
+void keyPressed() { 
+  if (key == 'a' || key == 'd' || key == 'w' || key == 's') {
+    keys[key] = true;
+  }
+}
+void keyReleased() { 
+  if (key == 'a' || key == 'd' || key == 'w' || key == 's') {
+    keys[key] = false;
+  }
+}
+// define all keyboard controls here
+void processInput() {
+  if (keys['a'])
+    cam.rotateY(-(inc - height / 2.0) / height / 20);
+  if (keys['d'])
+    cam.rotateY((inc - height / 2.0) / height / 20);
+  if (keys['w'])
+    cam.rotateX(-(inc - height / 2.0) / height / 20);
+  if (keys['s'])
+    cam.rotateX((inc - height / 2.0) / height / 20);
+}
+
 class Planet {
   PImage[] solar;
   int t;
@@ -144,6 +212,7 @@ class Planet {
     ypos = ypos + ycc;
   }
   void display(int ti) {
+    noFill();
     t = ti;
     if (curplanet == 1) {
       image(solar[t], 0, 0);
