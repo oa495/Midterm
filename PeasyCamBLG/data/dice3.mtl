@@ -9,4 +9,4 @@ Ks 0.500000 0.500000 0.500000
 Ni 1.000000
 d 1.000000
 illum 2
-map_Kd /Users/bradengammon/Documents/Blender/dice/dice_texture_uv_map.jpg
+map_Kd dice_texture_uv_map.jpg
