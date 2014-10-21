@@ -1,5 +1,8 @@
 public class Planet {
-  private static final float EARTH_SPEED = .007;
+  public static final float EARTH_SPEED = .007;
+  
+  // speed at which planet should go
+  float speed = 1;
   
   float x = 0, y = 0, z = 0; // translation
   float rX = 0, rY = 0, rZ = 0; // rotation
@@ -19,10 +22,7 @@ public class Planet {
   
   void draw() {
     pushMatrix();
-      // calculate position
-      rY += EARTH_SPEED / period;
-      if (abs(rY) > Math.PI * 2) rY = 0;
-      x = getRadius();
+      updatePosition();
       
       // position planet
       rotateY(rY + rOffset);
@@ -37,5 +37,11 @@ public class Planet {
   
   float getRadius() {
     return r0 * (1 + e) / (1 + e * cos(rY));
+  }
+  
+  void updatePosition() {
+    rY += EARTH_SPEED / period * speed;
+    if (abs(rY) > Math.PI * 2) rY = 0;
+    x = getRadius(); 
   }
 }
