@@ -1,6 +1,6 @@
 Planet[] planets = new Planet[10];
 import processing.opengl.*;
-
+Asteriod[] theAsteriods = new Asteriod[5];
 int state = 0;
 PImage back;
 PFont f;
@@ -53,7 +53,10 @@ void setup() {
       R * sin(t)
       };
     }
-    cam = new PMatrix3D();
+    for (int i = 0; i < theAsteriods.length; i++) {
+      theAsteriods[i] = new Asteriod( random(-1000, 1000), random(-1000, 1000), random (-10000, -2000));
+    }
+  cam = new PMatrix3D();
 }
 void stuff() {
   float cameraZ = ((height/2.0) / tan(PI*60.0/360.0));
@@ -65,8 +68,9 @@ void stuff() {
 }
 
 void draw() {
+  image(back, 0, 0);
   if (state == 0) {
-    background(0);
+    // background(0);
     if (((keyPressed) && (key != 's')) || (!keyPressed)) {
       //   stuff();
     }
@@ -133,6 +137,9 @@ void draw() {
     stroke(255);
     line(width / 2 - 9, height / 2 - 0, width / 2 + 8, height / 2 + 0);
     line(width / 2 - 0, height / 2 - 9, width / 2 + 0, height / 2 + 8);
+    for (int i = 0; i < theAsteriods.length; i++) {
+      theAsteriods[i].display();
+    }
   }
 }
 boolean[] keys = new boolean[526];
@@ -215,8 +222,8 @@ class Planet {
     noFill();
     t = ti;
     if (curplanet == 1) {
-      image(solar[t], 0, 0);
-      background(0);
+      //    image(solar[t], 0, 0);
+      //  background(0);
     }
     noStroke();
     pushMatrix();
