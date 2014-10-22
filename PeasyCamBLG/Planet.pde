@@ -6,7 +6,7 @@ public class Planet {
   
   float x = 0, y = 0, z = 0; // translation
   float rX = 0, rY = 0, rZ = 0; // rotation
-  float rOffset = (float)Math.PI / 2; // starting rotation of the planet
+  float rOffset = 0; //(float)Math.PI / 2; // starting rotation of the planet
   
   float r0; // radius of semi-major axial orbit
   float rE; // radius of planet
