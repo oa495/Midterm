@@ -53,7 +53,6 @@ public class Planet {
   }
 
   void draw() {
-    rE = temp;
     pushMatrix();
     updatePosition();
 
@@ -111,7 +110,7 @@ public class Planet {
       noStroke();
       textureSphere(rE, rE, rE, neptune);
     } 
-
+    reset();
     //  sphere(rE);
 
     popMatrix();
@@ -119,6 +118,9 @@ public class Planet {
     textureSphere(50, 50, 50, theSun);
     //   stroke(0, 255, 0);
     //  line(centerX, centerY, edgeX, edgeY);
+  }
+  void reset() {
+    rE = temp;
   }
   void displayText() {
     rE = 100;
@@ -131,37 +133,37 @@ public class Planet {
       camera();
       //if you comment this, text  follows planet around
       noLights();
-      text("Mercury", 100, 100);
+      text("Mercury", 200, 100);
     } else if (current == 1) {
       camera();
       noLights();
-      text("Venus", 100, 100);
+      text("Venus", 200, 100);
     } else if (current == 2) {
       hint(DISABLE_DEPTH_TEST);
       camera();
       noLights();
-      text("Earth", 100, 100);
+      text("Earth", 200, 100);
       hint(ENABLE_DEPTH_TEST);
     } else if (current == 3) {
       camera();
       noLights();
-      text("Mars", 100, 100);
+      text("Mars", 200, 100);
     } else if (current == 4) {
       camera();
       noLights();
-      text("Jupiter", 100, 100);
+      text("Jupiter", 200, 100);
     } else if (current == 5) {
       camera();
       noLights();
-      text("Saturn", 100, 100);
+      text("Saturn", 200, 100);
     } else if (current == 6) {
       camera();
       noLights();
-      text("Uranus", 100, 100);
+      text("Uranus", 200, 100);
     } else if (current == 7) {
       camera();
       noLights();
-      text("Neptune", 100, 100);
+      text("Neptune", 200, 100);
     }
   }
   float getRadius() {
