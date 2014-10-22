@@ -117,46 +117,45 @@ public class Planet {
   }
   void displayText() {
     //store previous location of the mouse so text stays on screen when
-   //user clicks and moves away 
-   //make planets increase in size
-   //text for sun?
-    textSize(18);
+    //user clicks and moves away 
+    //make planets increase in size
+    //text for sun?
+    textSize(40);
     if (current == 0) {
- //     camera();
- //if you uncomment this, text doesn't follow planet around, displays at the top of the screen
+      camera();
+      //if you comment this, text  follows planet around
       noLights();
       text("Mercury", 100, 100);
     } else if (current == 1) {
- //     camera();
+      camera();
       noLights();
       text("Venus", 100, 100);
     } else if (current == 2) {
-    camera();
+      camera();
       noLights();
       text("Earth", 100, 100);
     } else if (current == 3) {
-//      camera();
+      camera();
       noLights();
       text("Mars", 100, 100);
     } else if (current == 4) {
-//      camera();
+      camera();
       noLights();
       text("Jupiter", 100, 100);
     } else if (current == 5) {
-//      camera();
+      camera();
       noLights();
       text("Saturn", 100, 100);
     } else if (current == 6) {
-//      camera();
+      camera();
       noLights();
       text("Uranus", 100, 100);
     } else if (current == 7) {
-   //   camera();
+      camera();
       noLights();
       text("Neptune", 100, 100);
-    }
-    else {
-     text("Sun", 100, 100); 
+    } else {
+      text("Sun", 100, 100);
     }
   }
   float getRadius() {
