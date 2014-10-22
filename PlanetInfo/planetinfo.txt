@@ -1,0 +1,109 @@
+THE SUN
+Origin of name: INFOMATION IN WRONG
+Length of day: 175 days, 22 hours, and 34 minutes
+Length of year: 88 Earth days
+Volume: 5.4% of Earth
+Mass: 5.5% of Earth
+Gravity: 38% of Earth
+Distance from Sun: 35,980,000 miles (57,910,000 km)
+Number of moons: 0
+Daytime temperature:
+Nighttime temperature:
+Atmosphere: 42% Oxygen, 29% Sodium, 22% Hydrogen, 6% Helium, 0.5% Potassium 
+
+MERCURY
+Origin of name: Roman god Mercury, known for moving swiftly
+Length of day: 175 days, 22 hours, and 34 minutes
+Length of year: 88 Earth days
+Volume: 5.4% of Earth
+Mass: 5.5% of Earth
+Gravity: 38% of Earth
+Distance from Sun: 35,980,000 miles (57,910,000 km)
+Number of moons: 0
+Daytime temperature:
+Nighttime temperature:
+Atmosphere: 42% Oxygen, 29% Sodium, 22% Hydrogen, 6% Helium, 0.5% Potassium 
+
+VENUS
+Origin of name: Roman goddess Venus, goddess of love and beauty
+Length of day: 116 days, 18 hours, and 0 minutes
+Length of year: 225 Earth days
+Number of Earths that fit in it:
+Mass:
+Distance from Sun: 67,240,000 miles (108,200,000 km)
+Number of moons: 0
+Daytime temperature:
+Nighttime temperature:
+Atmosphere: Carbon Dioxide 96.5%, Nitrogen 3.5% 
+
+EARTH
+Origin of name: Roman goddess Venus, goddess of love and beauty
+Length of day: 24 hours
+Length of year: 365.25 Earth days
+Number of Earths that fit in it: 1 
+Mass:
+Distance from Sun: 
+Number of moons: 1 
+Daytime temperature:
+Nighttime temperature:
+Atmosphere: Nitrogen 78.1%, Oxygen 20.1%, Argon 0.93%, Carbon Dioxide 0.04%,
+
+MARS
+Origin of name: Roman god Mars, god of war
+Length of day: 1 day, 0 hours, and 40 minutes
+Length of year: 687 Earth days
+Number of Earths that fit in it:
+Mass:
+Distance from Sun:
+Number of moons:
+Daytime temperature:
+Nighttime temperature:
+Atmosphere: Carbon Dioxide 95.3%, Nitrogen 2.7%, Argon 1.6%
+
+JUPITER
+Origin of name: Roman god Jupiter, the leader of the gods
+Length of day: 9 hours and 56 minutes
+Length of year: 11.87 Earth years
+Number of Earths that fit in it:
+Mass:
+Distance from Sun:
+Number of moons: 63
+Daytime temperature:
+Nighttime temperature:
+Atmosphere: Hydrogen (90%), Helium (10%)
+
+SATURN
+Origin of name: Roman god Saturn, god of farming
+Length of day: 10 hours and 39 minutes
+Length of year: 29.48 Earth years
+Number of Earths that fit in it:
+Mass:
+Distance from Sun:
+Number of moons: 60
+Daytime temperature:
+Nighttime temperature:
+Atmosphere: Hydrogen (96.3%), Helium (3.25%)
+
+URANUS
+Origin of name: Greek god Uranus, god of the sky
+Length of day: 17 hours and 14 minutes
+Length of year: 84 Earth years
+Number of Earths that fit in it:
+Mass:
+Distance from Sun:
+Number of moons: 27
+Daytime temperature:
+Nighttime temperature:
+Atmosphere: Hydrogen (82.5%), Helium (15%), Methane (2.3%) 
+
+NEPTUNE
+Origin of name: Roman god Neptune, god of the sea
+Length of day: 16 hours and 6 minutes
+Length of year: 164.9 Earth years
+Number of Earths that fit in it:
+Mass:
+Distance from Sun:
+Number of moons: 13
+Daytime temperature:
+Nighttime temperature:
+Atmosphere: Hydrogen (80.0%), Helium (18.5%), Methane (1.5%) 
