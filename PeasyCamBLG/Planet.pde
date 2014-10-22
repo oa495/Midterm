@@ -1,5 +1,6 @@
 public class Planet {
   PImage mercury;
+  float temp;
   PImage theSun;
   PImage venus;
   PImage earth;
@@ -52,6 +53,7 @@ public class Planet {
   }
 
   void draw() {
+    rE = temp;
     pushMatrix();
     updatePosition();
 
@@ -72,15 +74,18 @@ public class Planet {
 
     // compute the distance between the center and the edge
     float d = dist(centerX, centerY, edgeX, edgeY);
-
+    temp = this.rE;
     // is the mouse over this planet?
     if (dist(mouseX, mouseY, centerX, centerY) < d)
     {
+      //stores size of planet
       displayText();
-    } /* else
+    }/* else
      {
-     fill(255);
+     rE = temp;
      } */
+
+    //   this.rE = temp; //sets it back
     if (current == 0) {
       noStroke();
       textureSphere(rE, rE, rE, mercury);
@@ -116,6 +121,7 @@ public class Planet {
     //  line(centerX, centerY, edgeX, edgeY);
   }
   void displayText() {
+    rE = 100;
     //store previous location of the mouse so text stays on screen when
     //user clicks and moves away 
     //make planets increase in size
@@ -131,9 +137,11 @@ public class Planet {
       noLights();
       text("Venus", 100, 100);
     } else if (current == 2) {
+      hint(DISABLE_DEPTH_TEST);
       camera();
       noLights();
       text("Earth", 100, 100);
+      hint(ENABLE_DEPTH_TEST);
     } else if (current == 3) {
       camera();
       noLights();
@@ -154,8 +162,6 @@ public class Planet {
       camera();
       noLights();
       text("Neptune", 100, 100);
-    } else {
-      text("Sun", 100, 100);
     }
   }
   float getRadius() {
