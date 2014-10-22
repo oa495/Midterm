@@ -1,3 +1,5 @@
+import picking.*;
+
 Planet[] planets = new Planet[10];
 import processing.opengl.*;
 Asteriod[] theAsteriods = new Asteriod[5];
@@ -8,7 +10,7 @@ final static int R = 1000;
 PMatrix3D cam;
 float[][] stars;
 float inc = 100;
-
+Picker picker;
 //work on using 2d image as 3d background
 //also so squares around images won't show
 
@@ -57,6 +59,7 @@ void setup() {
       theAsteriods[i] = new Asteriod( random(-1000, 1000), random(-1000, 1000), random (-10000, -2000));
     }
   cam = new PMatrix3D();
+  picker = new Picker(this);
 }
 void stuff() {
   float cameraZ = ((height/2.0) / tan(PI*60.0/360.0));
