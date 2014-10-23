@@ -1,4 +1,4 @@
-int NUM_PLANETS = 8;
+int NUM_PLANETS = 9;
 int NUM_FIELDS = 13;
 
 String[] rawData;

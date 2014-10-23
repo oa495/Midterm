@@ -1,116 +1,116 @@
 THE SUN
-Origin of name: INFOMATION IN WRONG
-Length of day: 175 days, 22 hours, and 34 minutes
-Length of year: 88 Earth days
-Volume: 5.4% of Earth
-Mass: 5.5% of Earth
-Gravity: 38% of Earth
-Distance from Sun: 35,980,000 miles (57,910,000 km)
+Origin of name: Indo-European word "sawel"— to shine
+Length of day: 25-27 Earth days
+Length of year: endless
+Volume: 1,300,000 x Earth
+Mass: 333,000 x Earth
+Gravity: 28 x Earth
+Distance from Sun: 0 miles (0 km)
 Number of moons: 0
-Daytime temperature:
-Nighttime temperature:
-Atmosphere: 42% Oxygen, 29% Sodium, 22% Hydrogen, 6% Helium, 0.5% Potassium 
+Maximum temperature: 15,700,000°F
+Minimum temperature: 15,700,000°F
+Atmosphere: 73.46% Hydrogen, 24.85% Helium, .77% Oxygen
 
 MERCURY
 Origin of name: Roman god Mercury, known for moving swiftly
-Length of day: 175 days, 22 hours, and 34 minutes
+Length of day: 175 Earth days, 22 hours, and 34 minutes
 Length of year: 88 Earth days
 Volume: 5.4% of Earth
 Mass: 5.5% of Earth
 Gravity: 38% of Earth
 Distance from Sun: 35,980,000 miles (57,910,000 km)
 Number of moons: 0
-Daytime temperature:
-Nighttime temperature:
+Maximum temperature: 869°F
+Minimum temperature: -299°F
 Atmosphere: 42% Oxygen, 29% Sodium, 22% Hydrogen, 6% Helium, 0.5% Potassium 
 
 VENUS
 Origin of name: Roman goddess Venus, goddess of love and beauty
-Length of day: 116 days, 18 hours, and 0 minutes
+Length of day: 116 Earth days, 18 hours, and 0 minutes
 Length of year: 225 Earth days
-Volume:
-Mass:
-Gravity:
+Volume: 86.7% of Earth
+Mass: 81.5% of Earth
+Gravity: 90.4% of Earth
 Distance from Sun: 67,240,000 miles (108,200,000 km)
 Number of moons: 0
-Daytime temperature:
-Nighttime temperature:
+Maximum temperature: 870°F
+Minimum temperature: 870°F (yes, it is always very hot!)
 Atmosphere: Carbon Dioxide 96.5%, Nitrogen 3.5% 
 
 EARTH
-Origin of name: Roman goddess Venus, goddess of love and beauty
-Length of day: 24 hours
+Origin of name: Old English word "ertha"— ground
+Length of day: 24 Earth hours
 Length of year: 365.25 Earth days
-Volume:
-Mass:
-Gravity:
-Distance from Sun: 
+Volume: 1.08 ×10^12 cubic km
+Mass: 5.97 ×10^24 kg
+Gravity: 9.8 m/s
+Distance from Sun: 92,960,000 miles (149,600,000 km)
 Number of moons: 1 
-Daytime temperature:
-Nighttime temperature:
+Maximum temperature: -129°F
+Minimum temperature: 136°F
 Atmosphere: Nitrogen 78.1%, Oxygen 20.1%, Argon 0.93%, Carbon Dioxide 0.04%,
 
 MARS
 Origin of name: Roman god Mars, god of war
-Length of day: 1 day, 0 hours, and 40 minutes
+Length of day: 1 Earth day, 0 hours, and 40 minutes
 Length of year: 687 Earth days
-Volume:
-Mass:
-Gravity:
-Distance from Sun:
-Number of moons:
-Daytime temperature:
-Nighttime temperature:
+Volume: 15.1% of Earth
+Mass: 10.7% of Earth
+Gravity: 37.6% of Earth
+Distance from Sun: 141,600,000 miles (227,900,000 km)
+Number of moons: 2
+Maximum temperature: 70°F
+Minimum temperature: -195°F
 Atmosphere: Carbon Dioxide 95.3%, Nitrogen 2.7%, Argon 1.6%
 
 JUPITER
 Origin of name: Roman god Jupiter, the leader of the gods
 Length of day: 9 hours and 56 minutes
 Length of year: 11.87 Earth years
-Volume:
-Mass:
-Gravity:
-Distance from Sun:
+Volume: 1,321 x Earth
+Mass: 318 x Earth
+Gravity: 2.53 x Earth
+Distance from Sun: 483,800,000 miles (778,500,000 km)
 Number of moons: 63
-Daytime temperature:
-Nighttime temperature:
+Maximum temperature: 70°F
+Minimum temperature: -230°F
 Atmosphere: Hydrogen (90%), Helium (10%)
 
 SATURN
 Origin of name: Roman god Saturn, god of farming
 Length of day: 10 hours and 39 minutes
 Length of year: 29.48 Earth years
-Volume:
-Mass:
-Gravity:
-Distance from Sun:
+Volume: 764 x Earth
+Mass: 95 x Earth
+Gravity: 1.065 x Earth
+Distance from Sun: 890,700,000 miles (1,433,000,000 km)
 Number of moons: 60
-Daytime temperature:
-Nighttime temperature:
+Maximum temperature: 134°F
+Minimum temperature: -280°F
 Atmosphere: Hydrogen (96.3%), Helium (3.25%)
 
 URANUS
 Origin of name: Greek god Uranus, god of the sky
 Length of day: 17 hours and 14 minutes
 Length of year: 84 Earth years
-Volume:
-Mass:
-Gravity:
-Distance from Sun:
+Volume: 63 x Earth
+Mass: 14.5 x Earth
+Gravity: 88.7% of Earth
+Distance from Sun: 1,787,000,000 miles (2,877,000,000 km)
 Number of moons: 27
-Daytime temperature:
-Nighttime temperature:
+Maximum temperature: -243°F
+Minimum temperature: -370°F
 Atmosphere: Hydrogen (82.5%), Helium (15%), Methane (2.3%) 
 
 NEPTUNE
 Origin of name: Roman god Neptune, god of the sea
 Length of day: 16 hours and 6 minutes
 Length of year: 164.9 Earth years
-Volume:
-Mass:
-Gravity:
-Distance from Sun:
+Volume: 58 x Earth
+Mass: 17.2 x Earth
+Gravity: 1.14 x Earth
+Distance from Sun: 2,798,000,000 miles (4,503,000,000 km)
 Number of moons: 13
-Daytime temperature:
-Nighttime temperature:
+Maximum temperature: -330°F
+Minimum temperature: -360°F
 Atmosphere: Hydrogen (80.0%), Helium (18.5%), Methane (1.5%) 
