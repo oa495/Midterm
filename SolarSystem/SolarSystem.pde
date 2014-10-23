@@ -33,7 +33,7 @@ String[] rawData;
 String[][] planetInfo = new String[NUM_PLANETS][NUM_FIELDS];
 
 void setup() {
-  size(displayHeight, displayHeight - 50, P3D);
+  size(displayWidth, displayHeight - 50, P3D);
   noStroke();
   
   // load in text file of planet information
@@ -118,15 +118,18 @@ void keyReleased() {keys[keyCode] = false;}
 void keyPressed() {
   keys[keyCode] = true;
   
-  // define static keyboard controls here
   if (key == ' ') toggleRunning();
-  else if (key == 'c') cam.reset(100);
-  else if (key == 'd') defaultAngle();
-  else if (key == 'p') realignPlanets();
-  else if (key == 'r') resetSpeed();
-  else if (key == 'l') sun.toggleLighting();
-  else if (key == 'f') togglePause();
-  else if (key >= '0' && key <= '8') tracker = key;
+  if (key == 'c') cam.reset(100);
+  if (STATE == RUNNING) {
+    // define static keyboard controls here
+    if (key == 'd') defaultAngle();
+    else if (key == 't') topDownAngle();
+    else if (key == 'p') realignPlanets();
+    else if (key == 'r') resetSpeed();
+    else if (key == 'l') sun.toggleLighting();
+    else if (key == 'f') togglePause();
+    else if (key >= '0' && key <= '8') tracker = key;
+  }
 }
 
 // define fluid keyboard controls here
@@ -161,6 +164,15 @@ void defaultAngle() {
 }
 
 /**
+ * Define top down camera angle
+ */
+void topDownAngle() {
+  cam.reset(0);
+  cam.rotateY(PI / -2);
+  cam.rotateX(PI / 2);
+}
+
+/**
  * @return the speed of the simulation
  */
 static float getSpeed() {
@@ -185,7 +197,7 @@ void slowDown() {
  * Reset the simulation speed
  */
 void resetSpeed() {
-  SPEED = .2;
+  SPEED = .1;
 }
 
 /**
@@ -226,18 +238,30 @@ void cameraTrack(char tracker) {
 void startScreen() {
   resetShader(); // resetShader for drawing text
   noLights();
-  textSize(40);
+  textSize(80);
   textAlign(CENTER, CENTER);
-  text("Click and drag mouse to look around \n" + 
-       "Scroll to zoom in and out \n" +
-       "Press spacebar to start or pause \n" +
-       "C: reset camera angle \n" +
-       "D: default camera angle \n" +
-       "W: increase orbit speed \n" +
-       "S: decrease orbit speed \n" + 
-       "R: reset orbit speed \n" +
-       "P: realign planet orbits \n"
-  , 0, 0, 0);  
+  text("THE SOLAR SYSTEM", 0, -100, 0);
+  textSize(40);
+  text("Press the spacebar", 0, 0, 0);
+  String controls = "Click and drag: look around \n" + 
+       "Click on a planet to select it \n" +
+       "Scroll: zoom in and out \n" +
+       "Spacebar: Pause and unpause \n" +
+       "C: Reset Camera angle \n" +
+       "D: Default camera angle \n" +
+       "T: Top down camera angle \n" +
+       "W: Increase simulation speed \n" +
+       "S: Decrease simulation speed \n" + 
+       "R: Reset orbit speed \n" +
+       "P: Realign Planet orbits \n" + 
+       "L: Toggle natural Lighting \n" + 
+       "0: Center on Sun \n" + 
+       "1 - 8: Track the planets";
+  textSize(18);
+  textAlign(LEFT,BOTTOM);
+  text(controls, width / -2, height / 2);
+  textAlign(RIGHT, BOTTOM);
+  text("Created by Braden, Yeli, and Katy", width / 2, height / 2);
 }
  
 void displayInformation(Information information) {
