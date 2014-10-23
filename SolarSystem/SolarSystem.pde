@@ -19,11 +19,18 @@ static final int RUNNING = 1;
 // simulation speed
 static float SPEED;
 
+// Border offset
+int BORDER = 20;
+
 // The sun and planets
 Sun sun;
 Planet[] planets = new Planet[8];
 
 // Information about the 8 planets
+int NUM_PLANETS = 9;
+int NUM_FIELDS = 13;
+String[] rawData;
+String[][] planetInfo = new String[NUM_PLANETS][NUM_FIELDS];
 Information mercury;
 Information venus;
 Information earth;
@@ -40,15 +47,28 @@ void setup() {
   // load sun
   sun = new Sun();
   
-  // TO-DO: load planet Information 
-  mercury = new Information("Mercury");
-  venus = new Information("Venus");
-  earth = new Information("Earth");
-  mars = new Information("Mars");
-  jupiter = new Information("Jupiter");
-  saturn = new Information("Saturn");
-  uranus = new Information("Uranus");
-  neptune = new Information("Neptune");
+  // load in text file of planet information
+  rawData = loadStrings("planetinfo.txt");
+  for (int i = 0; i < NUM_PLANETS; i++)
+  {
+    // fill in the first element of each sub-array with the planet it corresponds to
+    planetInfo[i][0] = str(i);  //println(planetInfo[i][0]);
+    for (int j = 1; j < NUM_FIELDS; j++)
+    {
+      // to access the right data from loadedData, multiply which row you're on by 13 and add the col
+      planetInfo[i][j] = rawData[i*13 + j - 1]; //println(planetInfo[i][j]);                                        
+    }
+  }
+  
+  // load planet Information to each planet
+  mercury = new Information(planetInfo[1]);
+  venus = new Information(planetInfo[2]);
+  earth = new Information(planetInfo[3]);
+  mars = new Information(planetInfo[4]);
+  jupiter = new Information(planetInfo[5]);
+  saturn = new Information(planetInfo[6]);
+  uranus = new Information(planetInfo[7]);
+  neptune = new Information(planetInfo[8]);
   
   // load planets
   planets[0] = new Planet(mercury, 57.909227, 2.4397, 0.2408467, 0.20563593, "textures/1_mercury.jpg"); // mercury
@@ -83,17 +103,35 @@ void draw() {
     
     processInput();
     sun.draw();
+    
+    for (Planet planet: planets) planet.draw();
+    
     for (Planet planet: planets) {
-      planet.draw();
-      
-        // display planet's name if hovered. This code does not yet work
-//      if (planet.hovered) {
-//        cam.beginHUD();
-//        textSize(50);
-//        text(planet.information.name, 100, 100);
-//        cam.endHUD();
-//      }
+      // display planet's name if hovered. This code does not yet work
+      if (planet.hovered()) {
+        cam.beginHUD();
+        noLights();
+        textSize(70);
+        textAlign(LEFT, TOP);
+        text(planet.information.info[1], 0 + BORDER, 0 + BORDER);
+        textSize(20);
+        textAlign(RIGHT, TOP);
+        text(planet.information.info[3], width - BORDER, 0 + BORDER);
+        text(planet.information.info[4], width - BORDER, 0 + 30 + BORDER);
+        text(planet.information.info[12], width - BORDER, 0 + 60 + BORDER);
+        text(planet.information.info[8], width - BORDER, 0 + 90 + BORDER);
+        textAlign(LEFT);
+        text(planet.information.info[5], 0 + BORDER, height - 100 );
+        text(planet.information.info[6], 0 + BORDER, height - 70 );
+        text(planet.information.info[7], 0 + BORDER, height - 40 );
+        textAlign(RIGHT);
+        text(planet.information.info[9], width - BORDER, height - 100);
+        text(planet.information.info[10], width - BORDER, height - 70);
+        text(planet.information.info[11], width - BORDER, height - 40);
+        cam.endHUD();
+      } 
     }
+    
   } 
   
   else if (STATE == NOT_RUNNING) {
@@ -126,6 +164,7 @@ void keyPressed() {
   else if (key == 'd') defaultAngle();
   else if (key == 'p') realignPlanets();
   else if (key == 'r') resetSpeed();
+  else if (key == 'l') sun.toggleLighting();
   else if (key >= '0' && key <= '8') tracker = key;
 }
 
