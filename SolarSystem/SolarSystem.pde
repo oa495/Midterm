@@ -96,18 +96,19 @@ void draw() {
     cameraTrack(tracker);
     sun.draw();
     for (Planet planet: planets) planet.draw();
-    
-    // display all HUD elements after this point
-    for (int i = 0; i < planets.length; i++) {
-      if (planets[i].clicked()) {
-        tracker = (char) (i + 49);
-      } 
-    }
-    
   } 
   
   else if (STATE == NOT_RUNNING) {
     startScreen();
+  }
+}
+
+/**
+ * Select a planet onclick
+ */
+void mousePressed() {
+  for (int i = 0; i < planets.length; i++) {
+    if (planets[i].clicked()) tracker = (char) (i + 49);
   }
 }
 
@@ -259,9 +260,9 @@ void startScreen() {
        "1 - 8: Track the planets";
   textSize(18);
   textAlign(LEFT,BOTTOM);
-  text(controls, width / -2, height / 2);
+  text(controls, width / -2, height / 2, 0);
   textAlign(RIGHT, BOTTOM);
-  text("Created by Braden, Yeli, and Katy", width / 2, height / 2);
+  text("Created by Braden, Yeli, and Katy", width / 2, height / 2, 0);
 }
  
 void displayInformation(Information information) {
