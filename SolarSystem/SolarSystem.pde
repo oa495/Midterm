@@ -83,17 +83,27 @@ void draw() {
     
     processInput();
     sun.draw();
+    
+    for (Planet planet: planets) planet.draw();
+    
     for (Planet planet: planets) {
-      planet.draw();
-      
-        // display planet's name if hovered. This code does not yet work
-//      if (planet.hovered) {
-//        cam.beginHUD();
-//        textSize(50);
-//        text(planet.information.name, 100, 100);
-//        cam.endHUD();
-//      }
+      // display planet's name if hovered. This code does not yet work
+      if (planet.hovered()) {
+        cam.beginHUD();
+        noLights();
+        textSize(50);
+        textAlign(LEFT, TOP);
+        text(planet.information.name, 0, 0);
+        textAlign(RIGHT, TOP);
+        text(planet.information.name, width, 0);
+        textAlign(LEFT);
+        text(planet.information.name, 0, height - 100 );
+        textAlign(RIGHT);
+        text(planet.information.name, width, height - 100);
+        cam.endHUD();
+      } 
     }
+    
   } 
   
   else if (STATE == NOT_RUNNING) {
@@ -126,6 +136,7 @@ void keyPressed() {
   else if (key == 'd') defaultAngle();
   else if (key == 'p') realignPlanets();
   else if (key == 'r') resetSpeed();
+  else if (key == 'l') sun.toggleLighting();
   else if (key >= '0' && key <= '8') tracker = key;
 }
 
