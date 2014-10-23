@@ -129,6 +129,7 @@ void keyPressed() {
     else if (key == 'r') resetSpeed();
     else if (key == 'l') sun.toggleLighting();
     else if (key == 'f') togglePause();
+    else if (key == 'z') resetZoom();
     else if (key >= '0' && key <= '8') tracker = key;
   }
 }
@@ -222,6 +223,13 @@ void realignPlanets() {
 }
 
 /**
+ * Reset camera zoom distance
+ */
+void resetZoom() {
+  cam.setDistance(800);
+}
+
+/**
  * Update the camera tracker
  */
 void cameraTrack(char tracker) {
@@ -244,13 +252,11 @@ void startScreen() {
   text("THE SOLAR SYSTEM", 0, -100, 0);
   textSize(40);
   text("Press the spacebar", 0, 0, 0);
-  String controls = "Click and drag: look around \n" + 
-       "Click on a planet to select it \n" +
-       "Scroll: zoom in and out \n" +
-       "Spacebar: Pause and unpause \n" +
+  String controls = 
        "C: Reset Camera angle \n" +
        "D: Default camera angle \n" +
        "T: Top down camera angle \n" +
+       "Z: Reset camera zoom \n" +
        "W: Increase simulation speed \n" +
        "S: Decrease simulation speed \n" + 
        "R: Reset orbit speed \n" +
@@ -262,7 +268,11 @@ void startScreen() {
   textAlign(LEFT,BOTTOM);
   text(controls, width / -2, height / 2, 0);
   textAlign(RIGHT, BOTTOM);
-  text("Created by Braden, Yeli, and Katy", width / 2, height / 2, 0);
+  text("Click and drag: look around \n" + 
+       "Click on a planet to select it \n" +
+       "Scroll: zoom in and out \n" +
+       "Spacebar: Pause and unpause \n" + "Created by Braden, Yeli, and Katy"
+       , width / 2, height / 2, 0);
 }
  
 void displayInformation(Information information) {
