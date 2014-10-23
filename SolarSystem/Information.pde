@@ -1,7 +1,7 @@
 class Information {
-  String name;
+  String[] info;
   
-  public Information(String name) {
-    this.name = name;
-  }
+  public Information(String[] info) {
+    this.info = info;
+  } 
 }

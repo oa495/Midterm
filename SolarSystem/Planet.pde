@@ -1,25 +1,29 @@
 public class Planet extends TextureSphere {
   public static final float EARTH_SPEED = .007;
+  public static final float EARTH_YEAR = 365.25 / 10; // decrease value to slow down axial rotation
   
   Information information;
   
   boolean clicked = false;
   
   float x = 0, y = 0, z = 0; // translation
-  float rX = 0, rY = 0, rZ = 0; // rotation
+  float tilt = 0, rY = 0, rAxis = 0; // axial tilt in degrees, orbit rotation, axial rotation
   
   float orbitRadius; // radius of semi-major axial orbit
   float period; // length of orbit relative to earth's orbit
   float e; // eccentricity of elliptical orbit
+  float day; // length of day in hours
   
   float centerX, centerY, d;
   
-  public Planet(Information information, float orbitRadius, float planetRadius, float period, float e, String textureFile) {
+  public Planet(Information information, float orbitRadius, float planetRadius, float period, float day, float e, float tilt, String textureFile) {
     super(planetRadius, textureFile);
     this.information = information;
     this.orbitRadius = orbitRadius;
     this.period = period;
+    this.day = day;
     this.e = e;
+    this.tilt = tilt;
   }
   
   void draw() {
@@ -29,9 +33,12 @@ public class Planet extends TextureSphere {
       // position planet
       translate(x, y, z);
       
-      // make planet spin on its axis
-      // TO-DO: get rotation data from NASA and make planets spin at the right speed
-      rotateY(rY * 20);
+      
+      // rotate the planet to its axial tilt
+      rotateX(radians(tilt));
+      
+      // make the planet spin on its axis
+      rotateY(rAxis);
       
       // compute the screen position of the center point of this planet
       centerX = screenX(0,0,0);
@@ -39,17 +46,15 @@ public class Planet extends TextureSphere {
       
       // compute the edge of the sphere
       // this code does not work
-      float edgeX = screenX(radius, 0, 0);
-      float edgeY = screenY(radius, 0, 0);
+      float edgeX = screenX(radius, radius, radius);
+      float edgeY = screenY(radius, radius, radius);
       
       // compute the distance between the center and the edge
       // this code does not work
       d = dist(centerX, centerY, edgeX, edgeY);
       
       // is the mouse over this planet?
-      if (hovered()) {
-        tint(0,255,0);
-      }
+      if (hovered()) tint(255, 155);
       else noTint(); 
       
       // draw planet
@@ -64,6 +69,9 @@ public class Planet extends TextureSphere {
     x = orbitRadius * (1 + e) / (1 + e * cos(rY)); 
     z = x * -1 * sin(rY);
     x *= cos(rY);
+    rAxis += EARTH_SPEED * EARTH_YEAR * 24 / day * SolarSystem.getSpeed();
+    if (rAxis > PI * 2) rAxis -= PI * 2;
+    else if (rAxis < PI * -2) rAxis += PI * 2;
   }
   
   boolean hovered() {

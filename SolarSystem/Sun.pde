@@ -3,16 +3,19 @@ public class Sun extends TextureSphere {
   
   boolean naturalLighting = true;
   
+  Information information;
+  
   float size;
   
-  public Sun() {
+  public Sun(Information information) {
     super(SUN_SIZE, "textures/0_sun.jpg");
+    this.information = information;
   }
   
   public void draw() {
     
     // draw sun
-    //shader(texShader);
+    shader(texShader);
     noTint();
     textureSphere();
     
