@@ -33,7 +33,7 @@ String[] rawData;
 String[][] planetInfo = new String[NUM_PLANETS][NUM_FIELDS];
 
 void setup() {
-  size(displayWidth, displayHeight - 50, P3D);
+  size(displayWidth, displayHeight, P3D);
   noStroke();
   
   // load in text file of planet information
