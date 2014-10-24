@@ -1,7 +1,7 @@
-A Space Game
-============
+A Solar System Simulator
+========================
 
-An educational game that takes place in space. Visit all of the planets. Learn their names, and much more.
+An educational adventure that takes place in space. Visit all of the planets. Learn their names, and much more.
 ***
 
 #### Team Members
@@ -15,20 +15,16 @@ Katy Herrick (@KatyHerrick)
 ```
 public void setup() {
   size(640, 480);
-  textAlign(CENTER, CENTER);
   background(0);
   fill(255);
+  textAlign(CENTER, CENTER);
   text("Written with Processing", 320, 240);
 }
 ```
 ***
 
-### Educational. Also, Game.
-This is an educational adventure through the solar system. You get to visit each planet individually and learn something about it, but as with most games, getting there is more than half the fun. Good luck avoiding all of the asteroids.
+### Educational. Also, Cool.
+This is an educational adventure through the solar system. You get to visit each planet individually and learn something about it. But also, space is cool. Like, really cool. This isn't a factsheet. It's a interacive model. Have fun.
 
-### Update 1
-Added the two sketch files that are the basis examples for our game.
-
-`SolarSystem.pde`
-
-`NightSky.pde`
+##### Quick note
+You can use the included executables to make your adventure go fullscreen, as was originally intended. Processing's present mode is quite buggy, so fullscreen won't work by just trying to run the `.pde` files in Processing.
