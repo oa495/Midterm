@@ -24,7 +24,7 @@ public void setup() {
 ***
 
 ### Educational. Also, Cool.
-This is an educational adventure through the solar system. You get to visit each planet individually and learn something about it. But also, space is cool. Like, really cool. This isn't a factsheet. It's a interacive model. Have fun.
+This is an educational adventure through the solar system. You get to visit each planet individually and learn something about it. But also, space is cool. Like, really cool. This isn't a factsheet. It's a interactive model. Have fun.
 
 ##### Quick note
 You can use the included executables to make your adventure go fullscreen, as was originally intended. Processing's present mode is quite buggy, so fullscreen won't work by just trying to run the `.pde` files in Processing.
