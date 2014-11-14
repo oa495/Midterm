@@ -1,3 +1,8 @@
+/**
+ * A planet in the Solar System
+ * data taken from http://nssdc.gsfc.nasa.gov/planetary/factsheet/
+ * @author Braden Gammon
+ */
 public class Planet extends TextureSphere {
   public static final float EARTH_SPEED = .007;
   public static final float EARTH_YEAR = 365.25 / 10; // decrease value to slow down axial rotation
@@ -45,12 +50,12 @@ public class Planet extends TextureSphere {
       centerY = screenY(0,0,0);
       
       // compute the edge of the sphere
-      // this code does not work
+      // this code does not work well
       float edgeX = screenX(radius, radius, radius);
       float edgeY = screenY(radius, radius, radius);
       
       // compute the distance between the center and the edge
-      // this code does not work
+      // this code does not work well
       d = dist(centerX, centerY, edgeX, edgeY);
       
       // is the mouse over this planet?

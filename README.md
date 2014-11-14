@@ -1,34 +1,29 @@
-A Space Game
-============
+Solar System Simulator
+======================
 
-An educational game that takes place in space. Visit all of the planets. Learn their names, and much more.
-***
+An educational adventure that takes place in space. Visit all of the planets. Learn their names, and much more.
+
+## System Requirements
+Either run the source code within Processing (v3.0a4),
+or double click the included executable specific to your system.
+You must have Java installed on your computer.
 
 #### Team Members
-Yeli Arenyeka (@oa495)
-
-Braden Gammon (@bradengammon)
-
+Yeli Arenyeka (@oa495)  
+Braden Gammon (@bradengammon)  
 Katy Herrick (@KatyHerrick)
-***
 
+***
 ```
 public void setup() {
   size(640, 480);
-  textAlign(CENTER, CENTER);
   background(0);
   fill(255);
+  textAlign(CENTER, CENTER);
   text("Written with Processing", 320, 240);
 }
 ```
 ***
 
-### Educational. Also, Game.
-This is an educational adventure through the solar system. You get to visit each planet individually and learn something about it, but as with most games, getting there is more than half the fun. Good luck avoiding all of the asteroids.
-
-### Update 1
-Added the two sketch files that are the basis examples for our game.
-
-`SolarSystem.pde`
-
-`NightSky.pde`
+### Educational. Also, Cool.
+This is an educational adventure through the solar system. You get to visit each planet individually and learn something about it. But also, space is cool. Like, really cool. This isn't a factsheet. It's a interactive model. Have fun.

@@ -1,3 +1,14 @@
+/*********************************
+ * Solar System Simulator
+ * @author Braden Gammon
+ * @author Katy Herrick
+ * @author Omayeli Arenyeka
+ *
+ * Planet textures, TextureSphere example, and "space.mp3" found by Omayeli.
+ * Text layout and "planetInfo.txt" by Katy.
+ * Main programming by Braden Gammon.
+*********************************/
+
 // camera
 import peasy.*;
 PeasyCam cam;
@@ -19,10 +30,10 @@ static final int RUNNING = 1;
 // simulation speed
 static float SPEED;
 
-// Border offset
+// layout border offset
 int BORDER = 20;
 
-// The sun and planets
+// the sun and planets
 Sun sun;
 Planet[] planets = new Planet[8];
 
@@ -32,18 +43,20 @@ int NUM_FIELDS = 13;
 String[] rawData;
 String[][] planetInfo = new String[NUM_PLANETS][NUM_FIELDS];
 
+boolean sketchFullScreen() {
+  return true;
+}
+
 void setup() {
-  size(displayWidth, displayHeight, P3D);
+  size(displayWidth, displayHeight, OPENGL);
   noStroke();
   
   // load in text file of planet information
   rawData = loadStrings("text/planetInfo.txt");
-  for (int i = 0; i < NUM_PLANETS; i++)
-  {
+  for (int i = 0; i < NUM_PLANETS; i++) {
     // fill in the first element of each sub-array with the planet it corresponds to
     planetInfo[i][0] = str(i);
-    for (int j = 1; j < NUM_FIELDS; j++)
-    {
+    for (int j = 1; j < NUM_FIELDS; j++) {
       // to access the right data from loadedData, multiply which row you're on by 13 and add the col
       planetInfo[i][j] = rawData[i*13 + j - 1];                                       
     }
@@ -84,8 +97,9 @@ void setup() {
   theme.loop();
   theme.pause();
   
-  // initialize simulation speed
+  // initialize simulation
   resetSpeed();
+  defaultAngle();
 }
 
 void draw() {
@@ -93,9 +107,9 @@ void draw() {
   
   if (STATE == RUNNING) {
     processInput();
-    cameraTrack(tracker);
     sun.draw();
     for (Planet planet: planets) planet.draw();
+    cameraTrack(tracker);
   } 
   
   else if (STATE == NOT_RUNNING) {
@@ -145,12 +159,10 @@ void processInput() {
  */
 void toggleRunning() {
   if (STATE == NOT_RUNNING) {
-    defaultAngle();
     theme.play();
     STATE = RUNNING;
   }
   else {
-    cam.reset(0);
     theme.pause();
     STATE = NOT_RUNNING;
   }
@@ -247,32 +259,34 @@ void cameraTrack(char tracker) {
 void startScreen() {
   resetShader(); // resetShader for drawing text
   noLights();
-  textSize(80);
-  textAlign(CENTER, CENTER);
-  text("THE SOLAR SYSTEM", 0, -100, 0);
-  textSize(40);
-  text("Press the spacebar", 0, 0, 0);
-  String controls = 
-       "C: Reset Camera angle \n" +
-       "D: Default camera angle \n" +
-       "T: Top down camera angle \n" +
-       "Z: Reset camera zoom \n" +
-       "W: Increase simulation speed \n" +
-       "S: Decrease simulation speed \n" + 
-       "R: Reset orbit speed \n" +
-       "P: Realign Planet orbits \n" + 
-       "L: Toggle natural Lighting \n" + 
-       "0: Center on Sun \n" + 
-       "1 - 8: Track the planets";
-  textSize(18);
-  textAlign(LEFT,BOTTOM);
-  text(controls, width / -2, height / 2, 0);
-  textAlign(RIGHT, BOTTOM);
-  text("Click and drag: look around \n" + 
-       "Click on a planet to select it \n" +
-       "Scroll: zoom in and out \n" +
-       "Spacebar: Pause and unpause \n" + "Created by Braden, Yeli, and Katy"
-       , width / 2, height / 2, 0);
+  cam.beginHUD();
+    textSize(80);
+    textAlign(CENTER, CENTER);
+    text("THE SOLAR SYSTEM", width / 2, 100);
+    textSize(40);
+    text("Press the spacebar", width / 2, 200);
+    textSize(18);
+    textAlign(LEFT,BOTTOM);
+    text("C: Reset Camera angle \n" +
+         "D: Default camera angle \n" +
+         "T: Top down camera angle \n" +
+         "Z: Reset camera zoom \n" +
+         "W: Increase simulation speed \n" +
+         "S: Decrease simulation speed \n" + 
+         "R: Reset orbit speed \n" +
+         "P: Realign Planet orbits \n" + 
+         "L: Toggle natural Lighting \n" + 
+         "0: Center on Sun \n" + 
+         "1 - 8: Track the planets", 
+         BORDER, height - BORDER);
+    textAlign(RIGHT, BOTTOM);
+    text("Click and drag: look around \n" + 
+         "Click on a planet to select it \n" +
+         "Scroll: zoom in and out \n" +
+         "Spacebar: Pause and unpause \n" + 
+         "Created by Braden, Yeli, and Katy", 
+         width - BORDER, height - BORDER);
+  cam.endHUD();
 }
  
 void displayInformation(Information information) {
@@ -284,7 +298,7 @@ void displayInformation(Information information) {
     text(information.info[1], BORDER, BORDER);
     textSize(20);
     textAlign(RIGHT, TOP);
-    text(information.info[3], width - BORDER, 10 +  BORDER);
+    text(information.info[3], width - BORDER, 10 + BORDER);
     text(information.info[4], width - BORDER, 40 + BORDER);
     text(information.info[12], width - BORDER, 70 + BORDER);
     text(information.info[8], width - BORDER, 100 + BORDER);

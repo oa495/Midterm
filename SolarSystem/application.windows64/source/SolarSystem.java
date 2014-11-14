@@ -17,6 +17,17 @@ import java.io.IOException;
 
 public class SolarSystem extends PApplet {
 
+/*********************************
+ * Solar System Simulator
+ * @author Braden Gammon
+ * @author Katy Herrick
+ * @author Omayeli Arenyeka
+ *
+ * Planet textures, TextureSphere example, and "space.mp3" found by Omayeli.
+ * Text layout and "planetInfo.txt" by Katy.
+ * Main programming by Braden Gammon.
+*********************************/
+
 // camera
 
 PeasyCam cam;
@@ -38,10 +49,10 @@ static final int RUNNING = 1;
 // simulation speed
 static float SPEED;
 
-// Border offset
+// layout border offset
 int BORDER = 20;
 
-// The sun and planets
+// the sun and planets
 Sun sun;
 Planet[] planets = new Planet[8];
 
@@ -51,18 +62,20 @@ int NUM_FIELDS = 13;
 String[] rawData;
 String[][] planetInfo = new String[NUM_PLANETS][NUM_FIELDS];
 
+public boolean sketchFullScreen() {
+  return true;
+}
+
 public void setup() {
-  size(displayWidth, displayHeight, P3D);
+  size(displayWidth, displayHeight, OPENGL);
   noStroke();
   
   // load in text file of planet information
   rawData = loadStrings("text/planetInfo.txt");
-  for (int i = 0; i < NUM_PLANETS; i++)
-  {
+  for (int i = 0; i < NUM_PLANETS; i++) {
     // fill in the first element of each sub-array with the planet it corresponds to
     planetInfo[i][0] = str(i);
-    for (int j = 1; j < NUM_FIELDS; j++)
-    {
+    for (int j = 1; j < NUM_FIELDS; j++) {
       // to access the right data from loadedData, multiply which row you're on by 13 and add the col
       planetInfo[i][j] = rawData[i*13 + j - 1];                                       
     }
@@ -103,8 +116,9 @@ public void setup() {
   theme.loop();
   theme.pause();
   
-  // initialize simulation speed
+  // initialize simulation
   resetSpeed();
+  defaultAngle();
 }
 
 public void draw() {
@@ -112,9 +126,9 @@ public void draw() {
   
   if (STATE == RUNNING) {
     processInput();
-    cameraTrack(tracker);
     sun.draw();
     for (Planet planet: planets) planet.draw();
+    cameraTrack(tracker);
   } 
   
   else if (STATE == NOT_RUNNING) {
@@ -164,12 +178,10 @@ public void processInput() {
  */
 public void toggleRunning() {
   if (STATE == NOT_RUNNING) {
-    defaultAngle();
     theme.play();
     STATE = RUNNING;
   }
   else {
-    cam.reset(0);
     theme.pause();
     STATE = NOT_RUNNING;
   }
@@ -266,32 +278,34 @@ public void cameraTrack(char tracker) {
 public void startScreen() {
   resetShader(); // resetShader for drawing text
   noLights();
-  textSize(80);
-  textAlign(CENTER, CENTER);
-  text("THE SOLAR SYSTEM", 0, -100, 0);
-  textSize(40);
-  text("Press the spacebar", 0, 0, 0);
-  String controls = 
-       "C: Reset Camera angle \n" +
-       "D: Default camera angle \n" +
-       "T: Top down camera angle \n" +
-       "Z: Reset camera zoom \n" +
-       "W: Increase simulation speed \n" +
-       "S: Decrease simulation speed \n" + 
-       "R: Reset orbit speed \n" +
-       "P: Realign Planet orbits \n" + 
-       "L: Toggle natural Lighting \n" + 
-       "0: Center on Sun \n" + 
-       "1 - 8: Track the planets";
-  textSize(18);
-  textAlign(LEFT,BOTTOM);
-  text(controls, width / -2, height / 2, 0);
-  textAlign(RIGHT, BOTTOM);
-  text("Click and drag: look around \n" + 
-       "Click on a planet to select it \n" +
-       "Scroll: zoom in and out \n" +
-       "Spacebar: Pause and unpause \n" + "Created by Braden, Yeli, and Katy"
-       , width / 2, height / 2, 0);
+  cam.beginHUD();
+    textSize(80);
+    textAlign(CENTER, CENTER);
+    text("THE SOLAR SYSTEM", width / 2, 100);
+    textSize(40);
+    text("Press the spacebar", width / 2, 200);
+    textSize(18);
+    textAlign(LEFT,BOTTOM);
+    text("C: Reset Camera angle \n" +
+         "D: Default camera angle \n" +
+         "T: Top down camera angle \n" +
+         "Z: Reset camera zoom \n" +
+         "W: Increase simulation speed \n" +
+         "S: Decrease simulation speed \n" + 
+         "R: Reset orbit speed \n" +
+         "P: Realign Planet orbits \n" + 
+         "L: Toggle natural Lighting \n" + 
+         "0: Center on Sun \n" + 
+         "1 - 8: Track the planets", 
+         BORDER, height - BORDER);
+    textAlign(RIGHT, BOTTOM);
+    text("Click and drag: look around \n" + 
+         "Click on a planet to select it \n" +
+         "Scroll: zoom in and out \n" +
+         "Spacebar: Pause and unpause \n" + 
+         "Created by Braden, Yeli, and Katy", 
+         width - BORDER, height - BORDER);
+  cam.endHUD();
 }
  
 public void displayInformation(Information information) {
@@ -303,7 +317,7 @@ public void displayInformation(Information information) {
     text(information.info[1], BORDER, BORDER);
     textSize(20);
     textAlign(RIGHT, TOP);
-    text(information.info[3], width - BORDER, 10 +  BORDER);
+    text(information.info[3], width - BORDER, 10 + BORDER);
     text(information.info[4], width - BORDER, 40 + BORDER);
     text(information.info[12], width - BORDER, 70 + BORDER);
     text(information.info[8], width - BORDER, 100 + BORDER);
@@ -317,6 +331,10 @@ public void displayInformation(Information information) {
     text(information.info[11], width - BORDER, height - 40);
   cam.endHUD();
 }
+/**
+ * Stores information about a planet
+ * @author Braden Gammon
+ */
 class Information {
   String[] info;
   
@@ -324,6 +342,11 @@ class Information {
     this.info = info;
   } 
 }
+/**
+ * A planet in the Solar System
+ * data taken from http://nssdc.gsfc.nasa.gov/planetary/factsheet/
+ * @author Braden Gammon
+ */
 public class Planet extends TextureSphere {
   public static final float EARTH_SPEED = .007f;
   public static final float EARTH_YEAR = 365.25f / 10; // decrease value to slow down axial rotation
@@ -371,12 +394,12 @@ public class Planet extends TextureSphere {
       centerY = screenY(0,0,0);
       
       // compute the edge of the sphere
-      // this code does not work
+      // this code does not work well
       float edgeX = screenX(radius, radius, radius);
       float edgeY = screenY(radius, radius, radius);
       
       // compute the distance between the center and the edge
-      // this code does not work
+      // this code does not work well
       d = dist(centerX, centerY, edgeX, edgeY);
       
       // is the mouse over this planet?
@@ -410,9 +433,15 @@ public class Planet extends TextureSphere {
     return false;
   }
 }
+/**
+ * A light-emitting sun
+ * @author Braden Gammon
+ */
 public class Sun extends TextureSphere {
   private static final float SUN_SIZE = 50;
   
+  // if true, use texlight shader to produce realistic lighting
+  // if false, everything in the scene has full ambient lighting 
   boolean naturalLighting = true;
   
   Information information;
@@ -442,6 +471,11 @@ public class Sun extends TextureSphere {
     naturalLighting = !naturalLighting;
   }
 }
+/**
+ * A sphere with a mapped image texture
+ * Original: https://processing.org/examples/texturesphere.html
+ * Edited: Braden Gammon
+ */
 public class TextureSphere {
   private static final int DEFAULT_DETAIL = 30;
   

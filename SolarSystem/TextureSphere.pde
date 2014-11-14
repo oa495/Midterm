@@ -1,3 +1,8 @@
+/**
+ * A sphere with a mapped image texture
+ * Original: https://processing.org/examples/texturesphere.html
+ * Edited: Braden Gammon
+ */
 public class TextureSphere {
   private static final int DEFAULT_DETAIL = 30;
   

@@ -1,3 +1,7 @@
+/**
+ * Stores information about a planet
+ * @author Braden Gammon
+ */
 class Information {
   String[] info;
   

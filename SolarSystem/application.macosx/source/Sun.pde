@@ -1,6 +1,12 @@
+/**
+ * A light-emitting sun
+ * @author Braden Gammon
+ */
 public class Sun extends TextureSphere {
   private static final float SUN_SIZE = 50;
   
+  // if true, use texlight shader to produce realistic lighting
+  // if false, everything in the scene has full ambient lighting 
   boolean naturalLighting = true;
   
   Information information;
