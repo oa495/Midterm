@@ -3,8 +3,10 @@ Solar System Simulator
 
 An educational adventure that takes place in space. Visit all of the planets. Learn their names, and much more.
 
+Download the source code and executables on [GitHub](https://github.com/ybk380/Midterm/tree/braden)
+
 ## System Requirements
-Either run the source code within Processing (v3.0a4),
+Either run the source code within Processing (v3.0a4 recommended),
 or double click the included executable specific to your system.
 You must have Java installed on your computer.
 
